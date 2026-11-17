@@ -131,3 +131,11 @@ GitHub: https://github.com/amisha-15/devflow-backend
 ### Swagger UI
 
 ![DevFlow Swagger UI](Screenshort/swagger-ui.png.png)
+
+### Postman Collection
+
+The complete Postman collection is available here:
+
+[DevFlow API Testing Collection](postman/DevFlow-API-Testing.json)
+
+Import this JSON file into Postman to test the DevFlow REST APIs.
