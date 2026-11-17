@@ -65,15 +65,46 @@ It provides secure APIs for managing project tasks, tracking issue progress, ass
 
 ## Project Architecture
 
-The application follows a layered architecture:
+The application follows a layered architecture to maintain separation of concerns, improve code organization, and make the application easier to maintain.
 
-- **Controller:** Handles HTTP requests and responses.
-- **Service:** Contains business logic.
-- **Repository:** Handles database operations.
-- **Entity:** Represents database tables.
-- **DTO:** Transfers data between API layers.
-- **Security:** Handles JWT authentication and authorization.
-- **Exception:** Centralized exception handling.
+### Architecture Layers
+
+- **Controller:** Handles incoming HTTP requests and returns API responses.
+- **Service:** Contains business logic and processes application operations.
+- **Repository:** Handles database operations using Spring Data JPA.
+- **Entity:** Represents database tables and their relationships.
+- **DTO:** Transfers data between API layers and separates request/response structures from entities.
+- **Security:** Handles JWT-based authentication, authorization, and role-based access control.
+- **Exception:** Provides centralized exception handling and consistent error responses.
+
+### Architecture Diagram
+
+```mermaid
+flowchart TD
+    A["Client / Postman"] --> B["Spring Security"]
+    B --> C["JWT Authentication Filter"]
+    C --> D["REST Controllers"]
+    D --> E["DTOs and Validation"]
+    E --> F["Service Layer"]
+    F --> G["Repository Layer"]
+    G --> H[("MySQL Database")]
+
+    F --> I["JPA Entities"]
+    J["Global Exception Handler"] -.-> D
+    K["Swagger / OpenAPI"] -.-> D
+```
+
+### Request Flow
+
+1. The client sends an HTTP request with a JWT token.
+2. Spring Security validates the authentication and authorization.
+3. The REST Controller receives the request.
+4. DTOs and validation handle incoming request data where applicable.
+5. The Service Layer executes the business logic.
+6. The Repository Layer communicates with the MySQL database.
+7. The response is returned to the client.
+
+Global exception handling manages application errors, while Swagger/OpenAPI provides interactive API documentation.
 
 ## Database Configuration
 
