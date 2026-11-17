@@ -114,6 +114,104 @@ Swagger UI:
 
 Open Swagger UI to explore and test the available REST API endpoints.
 
+## API Endpoints
+
+Base URL: `http://localhost:8080`
+
+### 1. Project Management
+
+| Method | Endpoint | Description |
+|---|---|---|
+| GET | `/api/projects` | Get all projects |
+| POST | `/api/projects` | Create a new project |
+| GET | `/api/projects/{id}` | Get project by ID |
+| PUT | `/api/projects/{id}` | Update a project |
+| DELETE | `/api/projects/{id}` | Delete a project |
+
+### 2. Issue Management
+
+| Method | Endpoint | Description |
+|---|---|---|
+| GET | `/api/issues` | Get all issues with sorting |
+| POST | `/api/issues` | Create a new issue |
+| GET | `/api/issues/{id}` | Get issue by ID |
+| PUT | `/api/issues/{id}` | Update an issue |
+| DELETE | `/api/issues/{id}` | Delete an issue |
+| GET | `/api/issues/status/{status}` | Get issues by status |
+| GET | `/api/issues/priority/{priority}` | Get issues by priority |
+| GET | `/api/issues/filter?status=OPEN&priority=HIGH` | Filter issues by status and priority |
+| GET | `/api/issues/assignee/{assigneeId}` | Get issues by assignee |
+| GET | `/api/issues/label/{labelId}` | Get issues by label |
+| GET | `/api/issues/search?title=login` | Search issues by title |
+| GET | `/api/issues/due-date?startDate=2026-11-01&endDate=2026-11-30` | Get issues by due-date range |
+| GET | `/api/issues/overdue` | Get overdue issues |
+| GET | `/api/issues/paginated?page=0&size=5` | Get paginated issues |
+| GET | `/api/issues/page?page=0&size=5&sortBy=createdAt&direction=desc` | Get issues with pagination and sorting |
+| PATCH | `/api/issues/{issueId}/status` | Update issue status |
+
+### 3. Comments Management
+
+| Method | Endpoint | Description |
+|---|---|---|
+| GET | `/api/issues/{issueId}/comments` | Get comments for an issue |
+| POST | `/api/issues/{issueId}/comments` | Add a comment to an issue |
+| PUT | `/api/issues/{issueId}/comments/{commentId}` | Update a comment |
+| DELETE | `/api/issues/{issueId}/comments/{commentId}` | Delete a comment |
+
+### 4. Attachments Management
+
+| Method | Endpoint | Description |
+|---|---|---|
+| GET | `/api/issues/{issueId}/attachments` | Get attachments for an issue |
+| POST | `/api/issues/{issueId}/attachments` | Upload an attachment to an issue |
+| GET | `/api/issues/{issueId}/attachments/{attachmentId}/download` | Download an attachment |
+| DELETE | `/api/issues/{issueId}/attachments/{attachmentId}` | Delete an attachment |
+
+### 5. Labels Management
+
+| Method | Endpoint | Description |
+|---|---|---|
+| GET | `/api/labels` | Get all labels |
+| POST | `/api/labels` | Create a new label |
+| PUT | `/api/issues/{issueId}/labels` | Assign labels to an issue |
+| DELETE | `/api/issues/{issueId}/labels/{labelId}` | Remove a label from an issue |
+
+### 6. Dashboard APIs
+
+| Method | Endpoint | Description |
+|---|---|---|
+| GET | `/api/issues/dashboard/summary` | Get dashboard summary |
+| GET | `/api/issues/dashboard/priority-summary` | Get issue priority summary |
+| GET | `/api/issues/dashboard/assignee-summary` | Get issue assignee summary |
+| GET | `/api/issues/dashboard/overview` | Get complete dashboard overview |
+
+### 7. Activity APIs
+
+| Method | Endpoint | Description |
+|---|---|---|
+| GET | `/api/issues/{issueId}/activities?page=0&size=5` | Get paginated activities for an issue |
+
+### 8. Sprint Management
+
+| Method | Endpoint | Description |
+|---|---|---|
+| GET | `/api/sprints` | Get all sprints |
+| POST | `/api/sprints` | Create a new sprint |
+| GET | `/api/sprints/{id}` | Get sprint by ID |
+| PUT | `/api/sprints/{id}` | Update a sprint |
+| DELETE | `/api/sprints/{id}` | Delete a sprint |
+| PUT | `/api/sprints/{sprintId}/issues` | Assign issues to a sprint |
+| GET | `/api/sprints/{sprintId}/issues` | Get issues assigned to a sprint |
+| PUT | `/api/sprints/{sprintId}/start` | Start a sprint |
+| PUT | `/api/sprints/{sprintId}/complete` | Complete a sprint |
+| GET | `/api/sprints/{sprintId}/progress` | Get sprint progress |
+| GET | `/api/sprints/{sprintId}/dashboard` | Get sprint dashboard |
+
+### 9. Kanban Board
+
+| Method | Endpoint | Description |
+|---|---|---|
+| GET | `/api/issues/projects/{projectId}/kanban` | Get Kanban board data for a project |
 ## API Testing
 
 The APIs were tested using Postman, covering authentication, project management, issue management, comments, attachments, labels, sprints, dashboard, and activity tracking.
