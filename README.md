@@ -125,3 +125,9 @@ GitHub: https://github.com/amisha-15/devflow-backend
 ---
 
 **DevFlow – A Project and Issue Management REST API built with Java and Spring Boot.**
+
+## Screenshots
+
+### Swagger UI
+
+![DevFlow Swagger UI](Screenshort/swagger-ui.png.png)
